@@ -1,0 +1,38 @@
+{% extends "music/base.html" %}
+
+{% load static %}
+
+
+{%block title%}
+<h1>{{ singer.singer_name }}</h1>
+{% endblock title%}
+
+
+
+{% block pages %}
+    <div id="templatemo_menu">
+     	<ul>
+			<li><a href="/" >Anasayfa</a></li>
+			<li><a href="/sarkicilar/" class="current">Şarkıcılar</a></li>
+            <li><a href="/albumler/">Albümler</a></li>
+            <li><a href="/sarkilar/">Şarkılar</a></li>
+            <li><a href="subpage.html" class="lastmenu">İletişim</a></li>
+        </ul>
+    </div>
+{% endblock pages %}
+
+
+
+{% block album %}
+<ul >
+<img align="center"
+     src="/media/{{ singer.singer_foto}}" width=500 height=500 alt="album_logo"/><br>
+
+    <br>
+    <br>
+    <h1>Hakkinda Bilgi;</h1>
+    <br>
+    <pre>{{ singer.singer_life }}</pre>
+
+</ul>
+{% endblock album %}

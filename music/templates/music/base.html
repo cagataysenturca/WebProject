@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link href="/static/assets/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="/static/assets/css/templatemo_style.css">
+    <script src="/static/assets/js/html5.js"></script>
+    <script src="/static/assets/js/respond.min.js"></script>
+
+
+
+
+
+
+
+</head>
+<body>
+<!--
+This is a free CSS template provided by templatemo.com
+-->
+
+
+
+
+
+<div id="templatemo_container">
+
+	<div id="templatemo_header">
+    	<div id="templatemo_title">
+            <div id="templatemo_sitetitle">Müzik <span>Dinle</span></div>
+        </div>
+
+        <div class="social" align="right"> <span>Bizi Takip Edin:</span>
+
+        <a class="twitter" href="https://www.twitter.com/">twitter</a>
+        <a class="facebook" href="https://www.facebook.com/">facebook</a>
+        <a class="youtube" href="https://www.youtube.com/">youtube</a>
+
+        </div>
+
+        <div id="templatemo_login">
+        	<form method="get" action="#">
+                <label>Ara:</label><input class="inputfield" name="keyword" type="text" id="keyword"/>
+                <input class="button" type="submit" name="Ara" value="Ara" />
+
+            </form>
+
+
+
+    </div>
+
+    </div>
+
+	<div id="templatemo_banner">
+
+
+       	<div id="templatemo_banner_text">
+		
+            <div id="banner_title" align="center">Müzik Dünyasına Hoşgeldiniz!</div>
+            
+    	</div>
+	</div>
+
+	{% block pages %}
+	{% endblock pages %}
+
+    <div id="templatemo_content">
+    
+    	<div id="templatemo_left_column">
+
+
+            <div class="left_col_box">
+
+
+                <h2>En Cok Dinlenen Sarkilar</h2>
+
+
+                <ul>
+                    {% for song in song_list %}
+
+                    <li><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
+                     {{song.song_name}}</a></font></li><br>
+
+                    {%endfor%}
+                </ul>
+                <h2>Yeni Cikan Sarkilar</h2>
+                <ul >
+                    {%for song in lastest_song %}
+                    <li><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
+                        {{ song.song_name }}</a> </font></li><br>
+
+                    {%endfor%}
+                </ul>
+			</div>
+
+		</div>
+
+
+
+
+
+      <div id="templatemo_right_column">
+
+        	<div id="new_released_section">
+            	{%block title%}
+                {% endblock title%}
+                {% block album %}
+            	<div class="new_released_box">
+                {% endblock album %}
+              <div class="rantsection">
+
+                    </div>
+
+            </div>
+
+            
+		</div>
+    </div>
+    <!--  Designed by w w w . t e m p l a t e m o . c o m  --> 
+    
+	<div id="templatemo_footer">
+        
+        <!-- Credit: www.templatemo.com -->
+	</div>
+</div>
+<!-- templatemo 047 music -->
+<!-- 
+Music Template 
+http://www.templatemo.com/preview/templatemo_047_music 
+-->  
+</body>
+</html>

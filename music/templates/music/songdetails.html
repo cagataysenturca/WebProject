@@ -1,0 +1,39 @@
+{% extends "music/base.html" %}
+
+
+{% load static %}
+
+{%block title%}
+<h1>{{song.album.singer.singer_name}} - {{ song.album.album_title}} </h1>
+{% endblock title%}
+
+{% block pages %}
+    <div id="templatemo_menu">
+     	<ul>
+			<li><a href="/" >Anasayfa</a></li>
+			<li><a href="/sarkicilar/">Şarkıcılar</a></li>
+            <li><a href="/albumler/">Albümler</a></li>
+            <li><a href="/song" class="current">Şarkılar</a></li>
+            <li><a href="subpage.html" class="lastmenu">İletişim</a></li>
+        </ul>
+    </div>
+{% endblock pages %}
+
+
+
+{% block album %}
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ song.video }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
+
+        <br>
+        <br>
+
+<font face="verdana" color="yellow" size="5" > {{ song.song_name }}  Sarki Sozu ; </font>
+<br>
+<br>
+<br>
+<pre> {{ song.song_lyrics }}</pre>
+
+{% endblock album %}
+

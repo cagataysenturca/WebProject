@@ -1,0 +1,46 @@
+{% extends "music/base.html" %}
+
+{% load static %}
+
+
+{%block title%}
+<h1>Yeni Cikan Albumler</h1>
+{% endblock title%}
+
+
+
+{% block pages %}
+    <div id="templatemo_menu">
+     	<ul>
+			<li><a href="/" class="current">Anasayfa</a></li>
+			<li><a href="/sarkicilar/">Şarkıcılar</a></li>
+            <li><a href="/albumler/">Albümler</a></li>
+            <li><a href="/sarkilar/">Şarkılar</a></li>
+            <li><a href="subpage.html" class="lastmenu">İletişim</a></li>
+        </ul>
+    </div>
+{% endblock pages %}
+
+
+
+
+
+
+
+
+{% block album %}
+<ul>
+    {%for album in albums %}
+
+
+    <div class="col-sm-6">
+        <img align=center src="/media/{{ album.album_logo }}" width="180" height="180" alt="album_logo"/>
+        <br>
+        <br>
+        <li><a href="{% url 'album' album.album_title|slugify album.id %}"><h3>{{album.album_title}} </a> </h3></li>
+        <br>
+    </div>
+
+    {%endfor%}
+</ul>
+{% endblock album %}

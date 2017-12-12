@@ -1,0 +1,48 @@
+{% extends "music/base.html" %}
+
+{% load static %}
+
+{%block title%}
+<h1>{{ album.singer_name }} - {{ album.album_title }}</h1>
+{% endblock title%}
+
+
+
+
+
+
+{% block pages %}
+
+    <div id="templatemo_menu">
+
+     	<ul>
+			<li><a href="/" >Anasayfa</a></li>
+			<li><a href="/sarkicilar/">Şarkıcılar</a></li>
+            <li><a href="/albumler/" class="current">Albümler</a></li>
+            <li><a href="/sarkilar/">Şarkılar</a></li>
+            <li><a href="subpage.html" class="lastmenu">İletişim</a></li>
+        </ul>
+
+    </div>
+
+{% endblock pages %}
+
+
+
+
+
+
+{% block album %}
+<ul >
+<img align=center
+     src="/media/{{ album.album_logo }}" width=400 height=400 alt="album_logo"/><br>
+
+
+    {% for song in album.song_set.all  %}
+
+    <br></be><li><font face="verdana" color="yellow" size="5" >
+    <a href="{% url 'songdetails' song.song_name|slugify song.id %}">{{song.song_name}} </a></font></li><br>
+    {% endfor %}
+
+</ul>
+{% endblock album %}
