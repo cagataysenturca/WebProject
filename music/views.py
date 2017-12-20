@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
 from music import models
+from music.forms import CommentForm
 from .models import Album, Song, Singer
 
 
@@ -48,7 +49,14 @@ def songdetails_page(request, song_name , song_id):
     song = get_object_or_404(Song, pk=song_id)
     song_list = Song.objects.all().order_by('song_point')[:15]
     lastest_song = Song.objects.all().order_by('song_date')[:15]
-    context = {"song": song, "song_list" : song_list, "lastest_song" : lastest_song}
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.song = song
+        comment.save()
+        return HttpResponseRedirect(song.get_absolute_url())
+
+    context = {"song": song, "song_list" : song_list, "lastest_song" : lastest_song,"form":form}
     return render(request, "music/songdetails.html", context)
 
 
@@ -57,6 +65,7 @@ def sarkicilar_page(request):
     song_list = Song.objects.all().order_by('song_point')[:15]
     singer = Album.objects.all()
     lastest_song = Song.objects.all().order_by('song_date')[:15]
+
     context = {"albums" : albums , "song_list" : song_list, "lastest_song" : lastest_song, "singer": singer}
     return render(request, 'music/sarkicilar.html', context)
 

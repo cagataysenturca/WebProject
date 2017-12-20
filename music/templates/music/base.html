@@ -86,15 +86,16 @@ This is a free CSS template provided by templatemo.com
                 <ul>
                     {% for song in song_list %}
 
-                    <li><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
+                    <li><img src=/media/{{ song.album.singer.singer_foto }} width="25" height="25"><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
                      {{song.song_name}}</a></font></li><br>
 
                     {%endfor%}
                 </ul>
                 <h2>Yeni Cikan Sarkilar</h2>
+
                 <ul >
                     {%for song in lastest_song %}
-                    <li><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
+                    <li><img src=/media/{{ song.album.singer.singer_foto }} width="25" height="25"><font face="verdana" color="yellow" size="2.2"><a href="{% url 'songdetails' song.song_name|slugify song.id %}">
                         {{ song.song_name }}</a> </font></li><br>
 
                     {%endfor%}

@@ -34,6 +34,17 @@
 <br>
 <br>
 <pre> {{ song.song_lyrics }}</pre>
+  <h3>Yorum Ekle:</h3>
+<p>
+    {% include 'music/comments.html' %}</p>
+                <hr/>
+
+                <h3>Yorumlar:</h3>
+                {% for comment in song.comments.all %}
+                    <h4>{{ comment.name }}  <small> </small></h4>
+                    <p>{{ comment.content|linebreaks }}</p>
+                    <hr>
+                {% endfor %}
 
 {% endblock album %}
 

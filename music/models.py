@@ -1,4 +1,4 @@
-
+from django.urls import reverse
 from datetime import datetime
 from django.db import models
 from embed_video.fields import EmbedVideoField
@@ -27,6 +27,9 @@ class Song(models.Model):
     song_date = models.DateField(default=datetime.now(), blank=True)
     song_lyrics = models.TextField(blank=True)
 
+    def get_absolute_url(self):
+        return reverse('songdetails', kwargs={'song_name': self.song_name,'song_id' : self.id})
+
 
     def __str__(self):
         return self.song_name
@@ -41,6 +44,17 @@ class Singer(models.Model):
     def __str__(self):
         return self.singer_name
 
+class Comment(models.Model):
+        song = models.ForeignKey('Song', on_delete=models.CASCADE, related_name='comments')
+        name = models.CharField(max_length=200, verbose_name='Ad Soyad')
+        content = models.TextField(verbose_name='Yorum')
+
+
+        def __str__(self):
+            return self.name
+
+
+
 
 
 
@@ -49,6 +63,12 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.genre
+
+
+class Roportaj(models.Model):
+    text = models.TextField(blank=True)
+
+
 
 
 
