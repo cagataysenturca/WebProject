@@ -13,11 +13,8 @@ class Album(models.Model):
     album_logo = models.ImageField(upload_to="music_imgs", blank=True)
     album_date = models.DateField(default=datetime.now(), blank=True)
 
-
     def __str__(self):
         return self.album_title
-
-
 
 class Song(models.Model):
     album = models.ForeignKey('Album')
@@ -55,9 +52,6 @@ class Comment(models.Model):
 
 
 
-
-
-
 class Genre(models.Model):
     genre = models.CharField(max_length=50)
 
@@ -66,7 +60,10 @@ class Genre(models.Model):
 
 
 class Roportaj(models.Model):
+
+    singer = models.ForeignKey('Singer')
     text = models.TextField(blank=True)
+    textuzun = models.TextField(blank=True)
 
 
 

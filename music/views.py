@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 
 from music import models
 from music.forms import CommentForm
-from .models import Album, Song, Singer
+from .models import Album, Song, Singer, Roportaj
 
 
 def index(request):
@@ -17,7 +17,6 @@ def index(request):
     context = {"albums" : albums, "song_list" : song_list , "lastest_song" : lastest_song, "singer": singer }
 
     return render(request, 'music/index.html', context)
-
 
 
 
@@ -37,10 +36,6 @@ def album_page(request, album_id, album_title):
     album = get_object_or_404(Album, pk=album_id)
     context = {"album": album, "song_list" : song_list, "lastest_song" : lastest_song}
     return render(request, "music/album.html", context)
-
-
-
-
 
 
 
@@ -86,13 +81,6 @@ def sarkicilardetails_page(request, singer_name , singer_id):
 
 
 
-
-
-
-
-
-
-
 def sarkilar(request):
     albums = Album.objects.all()
     song = Song.objects.all()
@@ -102,3 +90,24 @@ def sarkilar(request):
     return render(request, 'music/sarkilar.html', context)
 
 
+
+def roportaj(request):
+    albums = Album.objects.all().order_by('album_date')[:6]
+    roportaj = Roportaj.objects.all()
+    singer=Singer.objects.all()
+    song_list = Song.objects.all().order_by('song_point')[:15]
+    lastest_song = Song.objects.all().order_by('song_date')[:15]
+    context = {"albums" : albums, "song_list" : song_list ,
+               "lastest_song" : lastest_song, "singer": singer, "roportaj" : roportaj }
+
+    return render(request, 'music/roportaj.html', context)
+
+
+
+def roportajdetails_page(request, roportaj_id):
+    print(roportaj_id)
+    roportaj = get_object_or_404(Roportaj, pk=roportaj_id)
+    song_list = Song.objects.all().order_by('song_point')[:15]
+    lastest_song = Song.objects.all().order_by('song_date')[:15]
+    context = {"song_list" : song_list, "lastest_song" : lastest_song, "roportaj" : roportaj }
+    return render(request, "music/roportajdetails.html", context)

@@ -14,7 +14,7 @@
 			<li><a href="/sarkicilar/">Şarkıcılar</a></li>
             <li><a href="/albumler/">Albümler</a></li>
             <li><a href="/song" class="current">Şarkılar</a></li>
-            <li><a href="subpage.html" class="lastmenu">İletişim</a></li>
+            <li><a href="/roportaj/" class="lastmenu">Roportaj</a></li>
         </ul>
     </div>
 {% endblock pages %}
@@ -23,7 +23,8 @@
 
 {% block album %}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ song.video }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ song.video }}"
+        frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 
         <br>

@@ -1,0 +1,40 @@
+{% extends "music/base.html" %}
+
+{% load static %}
+
+
+{%block title%}
+<h1>{{roportaj.singer.singer_name}}  ile Roportaj</h1>
+{% endblock title%}
+
+
+
+{% block pages %}
+    <div id="templatemo_menu">
+     	<ul>
+			<li><a href="/" >Anasayfa</a></li>
+			<li><a href="/sarkicilar/" >Şarkıcılar</a></li>
+            <li><a href="/albumler/">Albümler</a></li>
+            <li><a href="/sarkilar/">Şarkılar</a></li>
+            <li><a href="/roportaj/" class="lastmenu" class="current">Roportaj</a></li>
+        </ul>
+    </div>
+{% endblock pages %}
+
+
+
+{% block album %}
+
+
+<img align="center" src="/media/{{ roportaj.singer.singer_foto }}" width="400" height="400"  />
+
+<br>
+<br>
+
+<hr>
+
+
+
+<pre> {{ roportaj.textuzun }} </pre>
+
+{% endblock album %}

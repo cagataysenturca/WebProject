@@ -28,6 +28,10 @@ urlpatterns = [
 
     url(r'^sarkilar/', views.sarkilar, name='sarkilar'),
 
+    url(r'^roportaj/', views.roportaj, name='roportaj'),
+
+    url(r'^/(?P<roportaj_id>[0-9]+)' , views.roportajdetails_page, name='roportajdetails'),
+
 
 
 ]
